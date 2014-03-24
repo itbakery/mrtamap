@@ -1,0 +1,29 @@
+<div class="page-header">
+  <%= link_to station_details_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_station_detail_path(@station_detail), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show station_detail</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Code:</dt>
+  <dd><%= @station_detail.code %></dd>
+
+  <dt>Title:</dt>
+  <dd><%= @station_detail.title %></dd>
+
+  <dt>Latitude:</dt>
+  <dd><%= @station_detail.latitude %></dd>
+
+  <dt>Longitude:</dt>
+  <dd><%= @station_detail.longitude %></dd>
+
+  <dt>Description:</dt>
+  <dd><%= @station_detail.description %></dd>
+
+</dl>

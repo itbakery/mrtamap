@@ -1,0 +1,29 @@
+<div class="page-header">
+  <%= link_to phase_details_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_phase_detail_path(@phase_detail), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show phase_detail</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>No:</dt>
+  <dd><%= @phase_detail.no %></dd>
+
+  <dt>Title:</dt>
+  <dd><%= @phase_detail.title %></dd>
+
+  <dt>Distance:</dt>
+  <dd><%= @phase_detail.distance %></dd>
+
+  <dt>Status:</dt>
+  <dd><%= @phase_detail.status %></dd>
+
+  <dt>Description:</dt>
+  <dd><%= @phase_detail.description %></dd>
+
+</dl>

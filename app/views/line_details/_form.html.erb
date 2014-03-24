@@ -1,0 +1,48 @@
+<%= form_for(@line_detail, :html => { :class => "form-horizontal" }) do |f| %>
+  <% if @line_detail.errors.any? %>
+    <div class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><%= pluralize(@line_detail.errors.count, "error") %> prohibited this line_detail from being saved:</h4>
+
+      <ul>
+      <% @line_detail.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :line, "รหัสโครงการ", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.collection_select  :line_id, Line.all , :id, :code , {:prompt => "Select MRTA Line"} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :country, "ประเทศ/ภาษา", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.collection_select  :country_id, Country.all , :id, :name , {:prompt => "Select Country/Language"} %>
+    </div>
+  </div>
+
+
+
+  <div class="form-group">
+    <%= f.label :title, "ชื่อโครงการ", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :title, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, "รายละเอียดโครงการ", :class => "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :description, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit :class => "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

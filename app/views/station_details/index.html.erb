@@ -1,0 +1,37 @@
+<div class="page-header">
+  <%= link_to new_station_detail_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Station detail
+  <% end %>
+  <h1>Listing station_details</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Code</th>
+            <th>Title</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Description</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @station_details) do |station_detail| %>
+            <td><%= station_detail.code %></td>
+            <td><%= station_detail.title %></td>
+            <td><%= station_detail.latitude %></td>
+            <td><%= station_detail.longitude %></td>
+            <td><%= station_detail.description %></td>
+            <td><%= link_to 'Show', station_detail %></td>
+        <td><%= link_to 'Edit', edit_station_detail_path(station_detail) %></td>
+        <td><%= link_to 'Destroy', station_detail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

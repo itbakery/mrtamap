@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
-  layout 'home'
+  layout 'welcome'
   def index
+    @lines = Line.all.to_a
   end
 end

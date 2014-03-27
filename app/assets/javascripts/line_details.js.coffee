@@ -2,12 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-ready = ->
+$(document).on 'ready page:load', ->
  if ($('textarea').length > 0)
     data = $('textarea')
     $.each data, (i) ->
          CKEDITOR.replace(data[i].id)
 
-
-$(document).ready(ready)
-$(document).on('page:load', ready)

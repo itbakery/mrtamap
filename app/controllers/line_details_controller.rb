@@ -1,4 +1,5 @@
 class LineDetailsController < ApplicationController
+  layout 'welcome'
   before_action :set_line_detail, only: [:show, :edit, :update, :destroy]
 
   # GET /line_details

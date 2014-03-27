@@ -67,3 +67,5 @@ gem 'jquery-ui-rails'
 gem 'bootstrap-wysihtml5-rails'
 gem "compass-rails"
 gem "nokogiri"
+gem "jquery-datatables-rails", git: 'git://github.com/rweng/jquery-datatables-rails.git'
+gem "jquery-ui-rails"

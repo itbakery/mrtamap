@@ -5,8 +5,11 @@ class LineDetail
   field :_id, type: String
 
   belongs_to  :line
-  belongs_to  :country 
+  belongs_to  :country
 
   has_many :phases
+  scope :lang, ->(lang) {where(:country => lang)}
+
+
 
 end

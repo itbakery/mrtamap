@@ -8,7 +8,9 @@ class StationDetail
   field :description, type: String
 
   field :_id, type: String
-
+  belongs_to :line
+  belongs_to :phase
   belongs_to :station
   belongs_to :country
+  scope :lang, ->(lang) {where(:country => lang)}
 end

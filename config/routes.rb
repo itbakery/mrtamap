@@ -1,4 +1,5 @@
 Mrtamap::Application.routes.draw do
+  get "maps/index"
   get "home/index"
   resources :station_details
 

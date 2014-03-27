@@ -1,9 +1,12 @@
 @import "bootstrap-variables";
 @import "bootstrap.scss";
 
-body {
-  padding-top: $navbar-height + 10px;
-}
+@import 'flatty/theme-colors';
+@import 'flatty/bootstrap/bootstrap';
+@import 'flatty/plugins/plugins';
+@import 'flatty/jquery/jquery_ui';
+@import 'flatty/light-theme';
+
 
 .page-header {
   a.btn {

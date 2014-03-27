@@ -30,6 +30,14 @@ GIT
       tzinfo (>= 0.3.37)
 
 GIT
+  remote: git://github.com/rweng/jquery-datatables-rails.git
+  revision: 788a7b24caf8fe58a5493aa3f6a065879a9f752a
+  specs:
+    jquery-datatables-rails (1.12.2)
+      jquery-rails
+      sass-rails
+
+GIT
   remote: https://github.com/nofxx/mongoid-slug.git
   revision: f77431917f8ac393e12db10a97a00a56c68092b5
   specs:
@@ -262,6 +270,7 @@ DEPENDENCIES
   geocoder
   gmaps4rails
   jbuilder (~> 1.2)
+  jquery-datatables-rails!
   jquery-rails
   jquery-ui-rails
   mini_magick

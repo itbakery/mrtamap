@@ -15,86 +15,113 @@
   margin-bottom: 5px;
 }
 </style>
-<div class="row clearfix">
-  <div class="col-md-6 column ui-sortable">
-    <div id="mapCanvas"></div>
-    <div class="clearfix"></div>
-    <b>Marker status: if map don't show please refresh browser</b>
-    <div id="markerStatus"><i>Click and drag the marker.</i></div>
+
+
+<ul class="nav nav-tabs" id="myTab">
+  <li class="active"><a href="#profile">Profile</a></li>
+  <li><a href="#description">Descriptions</a></li>
+</ul>
+
+<div id='content' class="tab-content">
+  <div class="tab-pane active" id="profile">
+    <br/>
+    <div class="row clearfix">
+      <div class="col-md-6 column ui-sortable">
+        <%= form_for(@station_detail, :html => { :class => "form-horizontal" }) do |f| %>
+          <% if @station_detail.errors.any? %>
+            <div class="alert alert-danger alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <h4><%= pluralize(@station_detail.errors.count, "error") %> prohibited this station_detail from being saved:</h4>
+              <ul>
+                <% @station_detail.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="form-group">
+            <%= f.label :line, "เส้นทาง", :class => "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.collection_select  :line_id, Line.all , :id, :code , {:prompt => "== Select MRTA Line =="} %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :phase, "ช่วง", :class => "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.grouped_collection_select  :phase_id, Line.all, :phases, :code , :id, :code , {:prompt => "== Select Phase =="} %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :station, "สถานี", :class => "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.grouped_collection_select  :station_id, Phase.all , :stations, :code , :id, :code, {:prompt => "== Select Station =="} %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :country, "ประเทศ/ภาษา", :class => "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.collection_select  :country_id, Country.all , :id, :name , {:prompt => "Select Country/Language"} %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :code,"รหัส", :class => "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :code, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :title, "ชื่อสถานี",:class => "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :title, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :latitude, :class => "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :latitude, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :longitude, :class => "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :longitude, :class => "form-control" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :address, "ที่อยู่ข้างเคียง", :class => "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+              <%= f.text_field :address, :class => "form-control" %>
+            </div>
+          </div>
+        </div>  <!--  form -->
+        <div class="col-md-6 column ui-sortable">
+          <div id="mapCanvas"></div>
+          <div class="clearfix"></div>
+          <b>Marker status: if map don't show please refresh browser</b>
+          <div id="markerStatus"><i>Click and drag the marker.</i></div>
+        </div>
+      </div> <!-- end row -->
+    </div> <!-- end profile -->
+    <div class="tab-pane" id="description">
+      <br/>
+      <div class="form-group">
+        <%= f.label :description, :class => "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.text_area :description, :class => "form-control" %>
+        <br/>
+        </div>
+      </div>
+    </div> <!-- end description -->
   </div>
-  <div class="col-md-6 column ui-sortable">
-    <%= form_for(@station_detail, :html => { :class => "form-horizontal" }) do |f| %>
-    <% if @station_detail.errors.any? %>
-    <div class="alert alert-danger alert-dismissable">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <h4><%= pluralize(@station_detail.errors.count, "error") %> prohibited this station_detail from being saved:</h4>
 
-      <ul>
-        <% @station_detail.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-      </ul>
+  <div class="form-group">
+    <div class="col-sm-12" style="background-color: #cccccc;">
+      <hr/>
+      <%= f.submit :class => "btn btn-primary" %>
+      <hr/>
     </div>
-    <% end %>
-    <div class="form-group">
-      <%= f.label :station, "สถานี", :class => "col-sm-2 control-label" %>
-      <div class="col-sm-10">
-        <%= f.collection_select  :station_id, Station.all , :id, :name , {:prompt => "Select Station"} %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :country, "ประเทศ/ภาษา", :class => "col-sm-2 control-label" %>
-      <div class="col-sm-10">
-        <%= f.collection_select  :country_id, Country.all , :id, :name , {:prompt => "Select Country/Language"} %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :code,"รหัส", :class => "col-sm-2 control-label" %>
-      <div class="col-sm-10">
-        <%= f.text_field :code, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :title, "ชื่อสถานี",:class => "col-sm-2 control-label" %>
-      <div class="col-sm-10">
-        <%= f.text_field :title, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :latitude, :class => "col-sm-2 control-label" %>
-      <div class="col-sm-10">
-        <%= f.text_field :latitude, :class => "form-control" %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :longitude, :class => "col-sm-2 control-label" %>
-      <div class="col-sm-10">
-        <%= f.text_field :longitude, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :address, "ที่อยู่ข้างเคียง", :class => "col-sm-2 control-label" %>
-      <div class="col-sm-10">
-        <%= f.text_field :address, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :description, :class => "col-sm-2 control-label" %>
-      <div class="col-sm-10">
-        <%= f.text_area :description, :class => "form-control" %>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <%= f.submit :class => "btn btn-primary" %>
-      </div>
-    </div>
-    <% end %>
-  </div>  <!--  form -->
-</div>
-
+  </div>
+<% end %>
 
 <script type="text/javascript">
 var geocoder = new google.maps.Geocoder();
@@ -162,7 +189,7 @@ google.maps.event.addListener(marker, 'dragend', function() {
   updateMarkerStatus('Drag ended');
   geocodePosition(marker.getPosition());
 });
- 
+
 }
 
 // Onload handler to fire off the app.

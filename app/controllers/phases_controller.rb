@@ -1,4 +1,5 @@
 class PhasesController < ApplicationController
+  layout 'welcome'
   before_action :set_phase, only: [:show, :edit, :update, :destroy]
 
   # GET /phases

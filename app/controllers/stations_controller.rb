@@ -1,4 +1,5 @@
 class StationsController < ApplicationController
+  layout 'welcome'
   before_action :set_station, only: [:show, :edit, :update, :destroy]
 
   # GET /stations
@@ -74,6 +75,6 @@ class StationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def station_params
-      params.require(:station).permit(:code)
+      params.require(:station).permit(:code, :phase_id)
     end
 end

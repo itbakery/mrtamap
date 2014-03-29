@@ -27,7 +27,7 @@
 // require flatty/bootstrap/bootstrap.min
 //= require flatty/plugins/plugins
 //= require flatty/theme
-//
+//= require gmap3
 // require dataTables/jquery.dataTables
 // require dataTables/jquery.dataTables.bootstrap3
 //= require_tree .

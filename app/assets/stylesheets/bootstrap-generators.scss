@@ -7,7 +7,6 @@
 @import 'flatty/jquery/jquery_ui';
 @import 'flatty/light-theme';
 
-
 .page-header {
   a.btn {
     float: right;
@@ -22,4 +21,10 @@ input[type="radio"], input[type="checkbox"] {
   width: initial;
   height: initial;
   margin-top: 7px;
+}
+
+#tabcontent {
+    background: none repeat scroll 0 0 #FBFBFB;
+  
+    min-width: 276px;
 }

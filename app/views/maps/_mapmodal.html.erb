@@ -1,0 +1,30 @@
+<style type="text/css">
+    .noscrollbar {
+    line-height:1.35;
+    overflow:hidden;
+    white-space:nowrap;
+
+    #mapcontent { 
+        height: 200px; width=200px; 
+    }
+}
+</style>
+<div id="mapcontent" class="noscrollbar" style="width: 300px">
+
+<h6>Description : <%=station.description %> </h6>
+
+
+<table class="table table-hover">
+    <tr>
+        <th>lat</th>
+        <th>lng</th>
+    </tr>
+
+    <tr>
+        <td><%=station.latitude%></td>
+        <td><%=station.longitude%></td>
+    </tr>
+</table>
+
+</div>
+

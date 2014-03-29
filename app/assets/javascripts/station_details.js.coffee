@@ -2,8 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 # html() to fetch innercontent and display output on console.log
-
+$.noConflict()
 $(document).on 'ready page:load', ->
+
   phases = $('#station_detail_phase_id').html()
   stations = $('#station_detail_station_id').html()
   #console.log(phases)

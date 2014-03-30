@@ -12,22 +12,47 @@
 
 
 <script type="text/javascript">
-handler = Gmaps.build('Google');
-handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers(<%=raw @hash.to_json %>);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-  google.maps.event.addListener(handler.getMap(), 'bounds_changed', function() {
-     console.log(handler.getMap().getBounds().getNorthEast().toString());
-  });
+	handler = Gmaps.build('Google');
+	handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+		markers = handler.addMarkers(<%=raw @hash.to_json %>);
+		handler.bounds.extendWith(markers);
+		handler.fitMapToBounds();
 
-  google.maps.event.addListener(handler.getMap(), "rightclick", function(event) {
-    var lat = event.latLng.lat();
-    var lng = event.latLng.lng();
-    // populate yor box/field with lat, lng
-    alert("Lat=" + lat + "; Lng=" + lng);
-  });
-});
+		google.maps.event.addListener(handler.getMap(), 'bounds_changed', function() {
+			console.log(handler.getMap().getBounds().getNorthEast().toString());
+		});
+
+		google.maps.event.addListener(handler.getMap(), "rightclick", function(event) {
+			var lat = event.latLng.lat();
+			var lng = event.latLng.lng();
+    		// populate yor box/field with lat, lng
+    		//alert("Lat=" + lat + "; Lng=" + lng);
+	    	markers = handler.addMarkers([
+	    	{
+	    	"lat": lat,
+	    	"lng": lng,
+	    	"animation" : google.maps.Animation.DROP,
+	    	"picture": {
+	    		"url": "/mapicons/pin_blue.png",
+	    		"width":  36,
+	    		"height": 36
+	    		},
+	    	"infowindow": "hello!"
+            }
+    		],{"draggable" :true});
+   			handler.bounds.extendWith(markers);
+    		handler.fitMapToBounds();
+
+        });
+
+        google.maps.event.addListener(marker, 'dragend', function(event) {
+        	var lat = event.latLng.lat();
+			var lng = event.latLng.lng();
+    		// populate yor box/field with lat, lng
+    		alert("Lat=" + lat + "; Lng=" + lng);
+
+		});
+	});
 
 
 </script>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fixed navigation & header | Flatty - Flat Administration Template</title>
+  <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+  <meta content='text/html;charset=utf-8' http-equiv='content-type'>
+  <meta content='Flat administration template for Twitter Bootstrap. Twitter Bootstrap 3 template with Ruby on Rails support.' name='description'>
+  <link href='/assets/images/meta_icons/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+  <link href='/assets/images/meta_icons/apple-touch-icon.png' rel='apple-touch-icon-precomposed'>
+  <link href='/assets/images/meta_icons/apple-touch-icon-57x57.png' rel='apple-touch-icon-precomposed' sizes='57x57'>
+  <link href='/assets/images/meta_icons/apple-touch-icon-72x72.png' rel='apple-touch-icon-precomposed' sizes='72x72'>
+  <link href='/assets/images/meta_icons/apple-touch-icon-114x114.png' rel='apple-touch-icon-precomposed' sizes='114x114'>
+  <link href='/assets/images/meta_icons/apple-touch-icon-144x144.png' rel='apple-touch-icon-precomposed' sizes='144x144'>
+  <!-- / START - page related stylesheets [optional] -->
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+
+  <style type="text/css">
+    html { height: 100% }
+    body { height: 100%; margin: 0px; padding: 0px }
+    #map { height: 100%,left: 0, bottom: 0 }
+    .rowFullWidth
+    {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+
+
+  </style>
+
+    <!--[if lt IE 9]>
+      <script src="assets/javascripts/ie/html5shiv.js" type="text/javascript"></script>
+      <script src="assets/javascripts/ie/respond.min.js" type="text/javascript"></script>
+      <![endif]-->
+    </head>
+    <body class='contrast-red fixed-header fixed-navigation'>
+      <%= render :partial => 'flatty/nav' %>
+      <div id='wrapper'>
+        <%= render :partial => 'flatty/sidebar' %>
+        <section id='content'>
+          <div class='container-fluid rowFullWidth'>
+            <%= yield %>
+          </div>
+
+          <div class='container-fluid'>
+            <%= render :partial => 'flatty/footer' %>
+          </div>
+        </section>
+      </div>
+    </body>
+    </html>

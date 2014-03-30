@@ -1,5 +1,5 @@
 class MapsController < ApplicationController
-  layout 'welcome'
+  layout 'map'
   def index
     @station_details = StationDetail.all
     @hash = Gmaps4rails.build_markers(@station_details) do |station, marker|
